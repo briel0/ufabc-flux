@@ -1,65 +1,94 @@
 import ReactFlow, {Background, Controls} from 'reactflow';
 import 'reactflow/dist/style.css'
-import materias from './data/materias.json';
+import materias from './data/materiasbcc.json';
 import {Disciplina} from './types';
 
 import {calcLevels} from './utils/layout';
 
-const containerStyle = {width: '100vw', height: '100vh'};
+import {useState, useMemo} from 'react';
+
+import {getRequisiteIds} from './utils/graph';
+
+import {createNode, createEdges} from './utils/graphBuild';
+
+const containerStyle = {width: '100%', height: '100vh'};
 
 function App() {
 
-    const levelMap = calcLevels(materias as Disciplina[]);
+    const [selectedCourseId, setSelectedCourseId] = useState<string | null>(null);
 
-    console.log("Mapa de Níveis:", levelMap);
+    const courseMap = useMemo(() => new Map<string, Disciplina>(materias.map(m => [m.id, m])), []);
 
-    const yCounter: Record<number, number> = {};
+    const selectedPath = useMemo(() =>
+    selectedCourseId ? getRequisiteIds(selectedCourseId, courseMap) : null,
+    [selectedCourseId, courseMap]);
 
-    function createNode(materia: Disciplina){
-
-        const columnX = levelMap[materia.id]
-
-        yCounter[columnX] = yCounter[columnX] === undefined ? 0 : yCounter[columnX] + 1;
-
-        console.log(`Materia: ${materia.id} | X: ${yCounter[columnX]} | Y: ${columnX}`);
-
-        return{
-            id: materia.id,
-            data: {label: materia.nome},
-
-            //Horizontal spacing (X) based on level, Vertical (Y) based on occupancy
-
-            position: {x: yCounter[columnX] * 350, y: columnX * 120},
+    const onNodeClick = 
+        function(event: React.MouseEvent, node: any){
+            setSelectedCourseId(node.id);
         };
-    }
 
-    function createEdges(materia: Disciplina){
-        return materia.recomendacoes.map(
-            function(idRecomendada){
-                return{
-                    id: `e-${idRecomendada}-${materia.id}`,
-                    source: idRecomendada,
-                    target: materia.id,
-                    animated: true,
-                    style: {stroke: '#555'}
-                };
-            }
-        );
-    }
+    const onPaneClick =
+        function(){
+            setSelectedCourseId(null);
+        };
 
-    const initialNodes = materias.map(createNode);
-    const initialEdges = materias.flatMap(createEdges);
+    const levelMap = useMemo(() => calcLevels(materias as Disciplina[]), []);
+
+    const {nodes, edges} = useMemo(
+        function(){
+            const yCounter: Record<number, number> = {};
+            const initialNodes = materias.map(
+                function(materia){
+                    const level = levelMap[materia.id];
+                    if(yCounter[level] == undefined){
+                        yCounter[level] = 0;
+                    }
+                    const index = yCounter[level]++;
+
+                    return createNode(materia, level, index, selectedCourseId, selectedPath);
+
+                }
+            );
+
+            const initialEdges = materias.flatMap(
+                function(materia){
+                    return createEdges(materia, courseMap, selectedPath);
+                }
+            );
+            return {nodes: initialNodes, edges: initialEdges};
+        },
+        [materias, levelMap, selectedPath, selectedCourseId, courseMap] 
+    );
+
+    const initialViewport = useMemo(() => {
+        const zoom = 1.1;
+        const MAX_PER_ROW = 5;
+        const NODE_WIDTH = 210;
+        
+        const graphWidth = MAX_PER_ROW * NODE_WIDTH;
+        
+        const centerX = (window.innerWidth / 2) - (graphWidth * zoom / 2);
+        
+        return { x: centerX, y: 50, zoom };
+    }, []);
 
     return(
         <div style = {containerStyle}>
             <ReactFlow 
-            nodes = {initialNodes} 
-            edges = {initialEdges}
+            nodes = {nodes} 
+            edges = {edges}
             nodesConnectable = {false}
             nodesDraggable={true}
             deleteKeyCode={null}
+
+            onNodeClick={onNodeClick}
+            onPaneClick={onPaneClick}
+            
+            defaultViewport={initialViewport}
+            
             >
-                <Background color="#ccc" gap={20}/>
+                <Background color="#888282ff" gap={20}/>
                 <Controls/>
             </ReactFlow>
         </div>

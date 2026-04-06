@@ -1,0 +1,262 @@
+[
+  {
+    "id": "BIS0003-15",
+    "nome": "Bases Matemáticas",
+    "recomendacoes": []
+  },
+  {
+    "id": "BIS0005-15",
+    "nome": "Bases Computacionais da Ciência",
+    "recomendacoes": []
+  },
+  {
+    "id": "BCS0001-15",
+    "nome": "Base Experimental das Ciências Naturais",
+    "recomendacoes": []
+  },
+  {
+    "id": "BIK0102-15",
+    "nome": "Estrutura da Matéria",
+    "recomendacoes": []
+  },
+  {
+    "id": "BIL0304-15",
+    "nome": "Evolução e Diversificação da Vida na Terra",
+    "recomendacoes": []
+  },
+  {
+    "id": "BIR0004-15",
+    "nome": "Bases Epistemológicas da Ciência Moderna",
+    "recomendacoes": []
+  },
+  {
+    "id": "BIR0603-15",
+    "nome": "Ciência Tecnologia e Sociedade",
+    "recomendacoes": []
+  },
+  {
+    "id": "BIQ0602-15",
+    "nome": "Estrutura e Dinâmica Social",
+    "recomendacoes": []
+  },
+  {
+    "id": "BCL0308-15",
+    "nome": "Bioquímica: estrutura, propriedade e funções de biomoléculas",
+    "recomendacoes": ["BIK0102-15", "BCL0307-15"]
+  },
+  {
+    "id": "BCK0103-15",
+    "nome": "Física Quântica",
+    "recomendacoes": ["BIK0102-15", "BCN0402-15", "BCJ0205-15", "BCJ0203-15"]
+  },
+  {
+    "id": "BIN0406-15",
+    "nome": "Introdução à Probabilidade e à Estatística",
+    "recomendacoes": ["BIS0003-15"]
+  },
+  {
+    "id": "BCN0405-15",
+    "nome": "Introdução às Equações Diferenciais Ordinárias",
+    "recomendacoes": ["BCN0407-15"]
+  },
+  {
+    "id": "BCM0504-15",
+    "nome": "Natureza da Informação",
+    "recomendacoes": ["BIS0005-15"]
+  },
+  {
+    "id": "BCN0402-15",
+    "nome": "Funções de Uma Variável",
+    "recomendacoes": ["BIS0003-15"]
+  },
+  {
+    "id": "BCN0404-15",
+    "nome": "Geometria Analítica",
+    "recomendacoes": ["BIS0003-15"]
+  },
+  {
+    "id": "BCL0306-15",
+    "nome": "Biodiversidade: Interações entre Organismos e Ambiente",
+    "recomendacoes": ["BIL0304-15"]
+  },
+  {
+    "id": "BCJ0204-15",
+    "nome": "Fenômenos Mecânicos",
+    "recomendacoes": ["BCN0402-15", "BCN0404-15", "BIS0003-15"]
+  },
+  {
+    "id": "BCM0505-22",
+    "nome": "Processamento da Informação",
+    "recomendacoes": ["BIS0005-15"]
+  },
+  {
+    "id": "BCN0407-15",
+    "nome": "Funções de Várias Variáveis",
+    "recomendacoes": ["BCN0402-15", "BCN0404-15"]
+  },
+  {
+    "id": "BCL0307-15",
+    "nome": "Transformações Químicas",
+    "recomendacoes": ["BIK0102-15"]
+  },
+  {
+    "id": "BCJ0205-15",
+    "nome": "Fenômenos Térmicos",
+    "recomendacoes": ["BCJ0204-15", "BCN0402-15","BIK0102-15"]
+  },
+  {
+    "id": "BCJ0203-15",
+    "nome": "Fenômenos Eletromagnéticos",
+    "recomendacoes": ["BIS0003-15","BCJ0204-15","BCN0402-15","BCN0407-15","BCN0404-15","BCN0405-15"]
+  },
+  {
+    "id": "BCM0506-15",
+    "nome": "Comunicação e Redes",
+    "recomendacoes": ["BCM0505-22"]
+  },
+  {
+    "id": "BCS0002-15",
+    "nome": "Projeto Dirigido",
+    "recomendacoes": []
+  },
+  {
+    "id": "MCTB001-17",
+    "nome": "Álgebra Linear",
+    "recomendacoes": ["BCN0404-15"]
+  },
+  {
+    "id": "MCTB019-17",
+    "nome": "Matemática Discreta",
+    "recomendacoes": ["BCN0402-15"]
+  },
+  {
+    "id": "MCTA028-15",
+    "nome": "Programação Estruturada",
+    "recomendacoes": ["BCM0505-22"]
+  },
+  {
+    "id": "MCCC001-23",
+    "nome": "Algoritmos e Estruturas de Dados I",
+    "recomendacoes": ["MCTA028-15","BCM0505-22"]
+  },
+  {
+    "id": "MCCC002-23",
+    "nome": "Algoritmos e Estruturas de Dados II",
+    "recomendacoes": ["MCCC001-23","MCTA028-15","BCM0505-22"]
+  },
+  {
+    "id": "MCCC010-23",
+    "nome": "Matemática Discreta II",
+    "recomendacoes": ["BCN0402-15","MCTB019-17"]
+  },
+  {
+    "id": "MCTA006-17",
+    "nome": "Circuitos Digitais",
+    "recomendacoes": ["BCM0504-15","BCJ0203-15"]
+  },
+  {
+    "id": "MCTA024-13",
+    "nome": "Sistemas Digitais",
+    "recomendacoes": ["MCTA006-17","BCM0504-15","BCJ0203-15"]
+  },
+  {
+    "id": "MCTA018-13",
+    "nome": "Programação Orientada a Objetos",
+    "recomendacoes": ["MCTA028-15","BCM0505-22"]
+  },
+  {
+    "id": "MCCC008-23",
+    "nome": "Inteligência Artificial",
+    "recomendacoes": ["MCCC001-23","MCTA028-15","BCM0505-22"]
+  },
+  {
+    "id": "MCCC015-23",
+    "nome": "Programação Funcional",
+    "recomendacoes": ["MCCC001-23","MCTA028-15","BCM0505-22"]
+  },
+  {
+    "id": "MCCC007-23",
+    "nome": "Computação Gráfica",
+    "recomendacoes": ["MCCC001-23","MCTA028-15","BCM0505-22","MCTA018-13","BCN0404-15"]
+  },
+  {
+    "id": "MCTA004-17",
+    "nome": "Arquitetura de Computadores",
+    "recomendacoes": ["MCTA024-13","MCTA006-17","BCM0504-15","BCJ0203-15","MCCC001-23","MCTA028-15","BCM0505-22"]
+  },
+  {
+    "id": "MCCC003-23",
+    "nome": "Algoritmos em Grafos",
+    "recomendacoes": ["BCM0504-15","BCN0402-15","MCCC001-23","MCCC002-23","MCTA028-15","MCTB019-17","MCCC010-23"]
+  },
+  {
+    "id": "MCCC004-23",
+    "nome": "Análise de Algoritmos I",
+    "recomendacoes": ["MCCC010-23","MCTB019-17","MCCC003-23","MCCC001-23","MCCC002-23","MCTA028-15","BCM0505-22","BCN0402-15"]
+  },
+  {
+    "id": "MCCC005-23",
+    "nome": "Análise de Algoritmos II",
+    "recomendacoes": ["MCCC004-23","MCCC010-23","MCTB019-17","MCCC003-23","MCCC001-23","MCCC002-23","MCTA028-15","BCM0505-22","BCN0402-15"]
+  },
+  {
+    "id": "MCTA026-13",
+    "nome": "Sistemas Operacionais",
+    "recomendacoes": ["MCTA004-17", "MCTA024-13","MCTA006-17","BCM0504-15","BCJ0203-15","MCCC002-23","MCCC001-23","MCTA028-15","BCM0505-22"]
+  },
+  {
+    "id": "MCTA022-17",
+    "nome": "Redes de Computadores",
+    "recomendacoes": ["BCM0505-22","MCTA028-15"]
+  },
+  {
+    "id": "MCTA023-17",
+    "nome": "Segurança de Dados",
+    "recomendacoes": ["MCTA022-17","MCTA028-15","BCM0505-22"]
+  },
+  {
+    "id": "MCTA025-13",
+    "nome": "Sistemas Distribuídos",
+    "recomendacoes": ["MCTA022-17", "MCCC001-23","MCCC002-23","MCTA028-15","BCM0505-22","MCTA018-13","MCTA026-13","MCTA004-17","MCTA024-13","MCTA006-17","BCM0504-15","BCJ0203-15"]
+  },
+  {
+    "id": "MCTA033-15",
+    "nome": "Engenharia de Software",
+    "recomendacoes": ["MCTA018-13", "MCTA028-15","BCM0505-22"]
+  },
+  {
+    "id": "MCCC012-23",
+    "nome": "Modelagem de Banco de Dados",
+    "recomendacoes": ["MCTA018-13", "MCTA028-15","BCM0505-22"]
+  },
+  {
+    "id": "MCCC009-23",
+    "nome": "Linguagens Formais e Automatos",
+    "recomendacoes": ["MCCC010-23", "MCTB019-17", "BCN0402-15", "MCCC005-23", "MCCC004-23", "MCCC003-23", "MCCC002-23", "MCCC001-23", "MCTA028-15", "BCM0505-22"]
+  },
+  {
+    "id": "MCCC006-23",
+    "nome": "Compiladores e Interpretadores",
+    "recomendacoes": ["MCCC009-23","MCCC010-23", "MCTB019-17", "BCN0402-15", "MCCC005-23", "MCCC004-23", "MCCC003-23", "MCCC002-23", "MCCC001-23", "MCTA028-15", "BCM0505-22"]
+  },
+  {
+    "id": "MCTA009-13",
+    "nome": "Computadores, Ética e Sociedade",
+    "recomendacoes": []
+  },
+  {
+    "id": "MCZA008-17",
+    "nome": "Interação Humano-Computador",
+    "recomendacoes": ["BCM0505-22"]
+  },
+  {
+    "id": "MCCC011-23",
+    "nome": "Metodologia e Escrita Científica para Ciência da Computação",
+    "recomendacoes": []
+  },
+  {
+    "id": "MCCC017-23",
+    "nome": "Trabalho de Conclusão de Curso em Ciência da Computação",
+    "recomendacoes": []
+  }
+]
