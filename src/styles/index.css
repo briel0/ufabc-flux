@@ -1,0 +1,16 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+
+html, body, #root {
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Evita scrolls indesejados na página inteira */
+    background-color: var(--bg-canvas); /* Garante que não haja flashes brancos no loading */
+}
+
+.react-flow__handle {
+    opacity: 0; /* Ou mude a cor para o fundo do card para ficarem invisíveis */
+}

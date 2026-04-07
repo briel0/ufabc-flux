@@ -1,0 +1,83 @@
+:root {
+/* Cores baseadas na sua imagem (Dark Theme) */
+    --bg-card: #111827;           /* Azul marinho quase preto */
+    --text-main: #f8fafc;        /* Branco off-white */
+    --text-sub: #94a3b8;         /* Cinza azulado para ID e créditos */
+
+    /* Cores de Destaque (Accent) */
+    --accent-default: #10b981;    /* Verde (como na imagem) */
+    --accent-selected: #3b82f6;   /* Azul para a matéria clicada */
+
+    --edge-color: #64748b;
+    --edge-highlight: #1d67dd;
+}
+
+/* Estilo Base do Nó */
+.node {
+    background-color: var(--bg-card);
+    color: var(--text-main);
+    border: 1px solid #1e293b;   /* Borda externa sutil */
+    border-left: 4px solid var(--accent-default); /* A "faixa" da imagem */
+    border-radius: 8px;
+    padding: 12px;
+    font-family: 'Inter', sans-serif;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+    width: 200px; /* Ajuste conforme seu NODE_WIDTH */
+    transition: all 0.2s ease-in-out;
+    text-align: left; /* Igual à imagem */
+}
+
+/* Nó Selecionado (O que você clicou) */
+.node.selected {
+    border-left-color: var(--accent-selected);
+    background-color: #1e293b;
+    transform: scale(1.02);
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+}
+
+/* Nó que faz parte do caminho (requisito) */
+.node.highlighted {
+    border-left-color: var(--accent-selected);
+}
+
+/* Nó "Apagado" */
+.node.muted {
+    opacity: 0.2;
+    filter: grayscale(0.5);
+}
+
+/* Estilização do Texto (Label) */
+/* Se você quiser separar ID de Nome depois, essas classes ajudam */
+.node-label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.node-id {
+    font-size: 10px;
+    color: var(--text-sub);
+    margin-bottom: 2px;
+    display: block;
+}
+
+.node-name {
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+/* Customização das Arestas (React Flow) */
+.react-flow__edge-path {
+    stroke: var(--edge-color);
+    stroke-width: 1.5;
+    transition: stroke 0.3s ease, stroke-width 0.3s ease, opacity 0.3s ease;
+}
+
+.edge.highlighted .react-flow__edge-path {
+    stroke: var(--edge-highlight);
+    stroke-width: 2.5;
+}
+
+.edge.muted {
+    opacity: 0.1;
+}

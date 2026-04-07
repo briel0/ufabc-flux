@@ -1,16 +1,7 @@
-import { Disciplina } from "../types";
+import {Disciplina} from "../../types";
 
 /*
 Calculates the topological depth (level) for each course in a DAG.
-Uses DFS with memoization for O(V + E) complexity.
-*/
-
-/*
-eu acho mais valido mesclar essa logica com o quadrimestre que
-é tipicamente feita a materia
-
-materias que sao feitas meio na frente, mas que tem poucas recomendacoes
-ficariam muito juntas, formando uma bagunça
 */
 
 export function calcLevels(courses: Disciplina[]){
@@ -54,5 +45,30 @@ export function calcLevels(courses: Disciplina[]){
     }
 
     return levels;
+
+}
+
+/*
+Recursively finds all prerequisite IDs.
+*/
+
+export function getRequisiteIds(id: string, courseMap: Map<string, Disciplina>, path: Set<string> = new Set()): Set<string>{
+    if(path.has(id)){
+        return path;
+    }
+
+    path.add(id);
+
+    const course = courseMap.get(id);
+
+    if(course){
+        course.recomendacoes.forEach(
+            function(prereqId){
+                getRequisiteIds(prereqId, courseMap, path);
+            }
+        );
+    }
+    
+    return path;
 
 }
