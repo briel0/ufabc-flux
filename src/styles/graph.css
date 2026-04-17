@@ -1,57 +1,82 @@
 :root {
-/* Cores baseadas na sua imagem (Dark Theme) */
-    --bg-card: #111827;           /* Azul marinho quase preto */
-    --text-main: #f8fafc;        /* Branco off-white */
-    --text-sub: #94a3b8;         /* Cinza azulado para ID e créditos */
+    /* 1. Cores dos Cards (Fundos) */
+    --bg-default: #111827;       /* Padrão (Sem seleção) */
+    --bg-highlighted: #031a3d;   /* Pré-requisito (Navy Profundo) */
+    --bg-selected: #0f172a;      /* Clicado (Buraco Negro/Deep Slate) */
 
-    /* Cores de Destaque (Accent) */
-    --accent-default: #10b981;    /* Verde (como na imagem) */
-    --accent-selected: #3b82f6;   /* Azul para a matéria clicada */
+    /* 2. Textos e Legibilidade */
+    --text-main: #f8fafc;        /* Branco off-white para nomes */
+    --text-sub: #94a3b8;         /* Cinza discreto para IDs */
+    --text-highlight: #f8fafc;   /* Ciano para dar vida aos pré-requisitos */
 
-    --edge-color: #64748b;
-    --edge-highlight: #1d67dd;
+    /* 3. Cores de Borda e Arestas (Accent) */
+    --accent-default: #10b981;   /* Verde (Matérias normais) */
+    --accent-selected: #3b82f6;  /* Azul Brilhante (Foco) */
 }
 
-/* Estilo Base do Nó */
 .node {
-    background-color: var(--bg-card);
+    background-color: var(--bg-default);
     color: var(--text-main);
-    border: 1px solid #1e293b;   /* Borda externa sutil */
-    border-left: 4px solid var(--accent-default); /* A "faixa" da imagem */
+    border: 1px solid rgba(255, 255, 255, 0.05); /* Borda externa super sutil */
+    border-left: 4px solid var(--accent-default); /* A faixa verde base */
     border-radius: 8px;
     padding: 12px;
     font-family: 'Inter', sans-serif;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
-    width: 200px; /* Ajuste conforme seu NODE_WIDTH */
     transition: all 0.2s ease-in-out;
-    text-align: left; /* Igual à imagem */
+    text-align: left;
+
+    width: 200px;
+    height: 95px; 
+    box-sizing: border-box;
+
+    overflow: hidden;
+
 }
 
-/* Nó Selecionado (O que você clicou) */
 .node.selected {
-    border-left-color: var(--accent-selected);
-    background-color: #1e293b;
-    transform: scale(1.02);
-    box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+    /* Redefinimos a borda inteira com !important para garantir a cor */
+    border-left: 4px solid var(--accent-selected) !important;
+    background-color: var(--bg-selected);
+    /*backdrop-filter: blur(4px);*/
+    transform: scale(1.04);
+    
+    /* O brilho Neon Azul fica exclusivo para este cara */
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.4); 
+    z-index: 20; /* Vem pra frente de tudo */
 }
 
-/* Nó que faz parte do caminho (requisito) */
 .node.highlighted {
-    border-left-color: var(--accent-selected);
+    border-left: 4px solid var(--accent-selected) !important;
+    background-color: var(--bg-highlighted);
+    transform: scale(1.02);
+    
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6); 
+    z-index: 10;
 }
 
-/* Nó "Apagado" */
+/* Tipografia customizada para o Highlighted */
+.node.highlighted .node-name {
+    color: var(--text-highlight); /* Letra fica Ciano */
+}
+
+.node.highlighted .node-id {
+    color: rgba(207, 250, 254, 0.6); /* ID Ciano escurecido */
+}
+
 .node.muted {
-    opacity: 0.2;
-    filter: grayscale(0.5);
+    opacity: 0.15;
+    filter: grayscale(0.8);
+    /* Deixa a borda cinza também pra não chamar atenção */
+    border-left: 4px solid #475569 !important; 
 }
 
-/* Estilização do Texto (Label) */
-/* Se você quiser separar ID de Nome depois, essas classes ajudam */
 .node-label {
     display: flex;
     flex-direction: column;
     gap: 4px;
+    /* O truque mestre para legibilidade em fundo escuro */
+    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.8); 
 }
 
 .node-id {
@@ -59,25 +84,32 @@
     color: var(--text-sub);
     margin-bottom: 2px;
     display: block;
+    letter-spacing: 0.05em;
 }
 
 .node-name {
+    font-size: 1.2em; /* Aumenta para aprox. 18px */
     font-weight: 600;
-    line-height: 1.2;
+    line-height: 1.25;   /* Dá um respiro entre as linhas se o texto quebrar */
+    letter-spacing: -0.01em; /* Deixa letras grandes mais "juntas" e elegantes */
+
 }
 
-/* Customização das Arestas (React Flow) */
 .react-flow__edge-path {
-    stroke: var(--edge-color);
-    stroke-width: 1.5;
-    transition: stroke 0.3s ease, stroke-width 0.3s ease, opacity 0.3s ease;
+    transition: stroke 0.3s ease, stroke-width 0.3s ease, opacity 0.2s ease;
 }
 
+/* Arestas Visíveis (Apenas entre selected e highlighted) */
 .edge.highlighted .react-flow__edge-path {
-    stroke: var(--edge-highlight);
+    stroke: var(--accent-selected); /* Usa o mesmo azul da borda */
     stroke-width: 2.5;
+    opacity: 1 !important;
+    /* Efeito de luz sutil acompanhando a linha */
+    filter: drop-shadow(0 0 4px rgba(59, 130, 246, 0.4));
 }
 
-.edge.muted {
-    opacity: 0.1;
+/* Arestas Ocultas (Limpando a tela) */
+.edge.muted .react-flow__edge-path,
+.edge.hidden .react-flow__edge-path {
+    opacity: 0 !important; 
 }

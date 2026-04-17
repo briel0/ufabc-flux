@@ -1,4 +1,4 @@
-import ReactFlow, {Background, Controls} from 'reactflow';
+import ReactFlow, {Background, Controls, Node} from 'reactflow';
 import 'reactflow/dist/style.css'
 import materias from './data/materiasbcc.json';
 import {Disciplina} from './types';
@@ -7,39 +7,81 @@ import {calcLevels} from './utils/graph/curriculum-logic';
 
 import {useState, useMemo} from 'react';
 
-import {getRequisiteIds} from './utils/graph/curriculum-logic';
-
 import {createNode, createEdges} from './utils/graph/graph-factory';
 
 import './styles/graph.css'
 
 import './styles/index.css'
 
+import { useGraphViewport } from './utils/graph/viewport-config';
+
 const containerStyle = {width: '100%', height: '100vh'};
 
 function App() {
 
-    const [selectedCourseId, setSelectedCourseId] = useState<string | null>(null);
+    const courseMap = useMemo(
+        function(){
+            return new Map<string, Disciplina>(materias.map(
+                function(m){
+                    return [m.id, m];
+                }
+            ));
+        },
+        []
+    ); 
+    
+    const [selectedIds, setSelectedCourseIds] = useState<Set<string>>(new Set());
+    
+    const {maxPerRow, initialViewport, translateExtent} = useGraphViewport(materias.length);
 
-    const courseMap = useMemo(() => new Map<string, Disciplina>(materias.map(m => [m.id, m])), []);
-
-    const selectedPath = useMemo(() =>
-    selectedCourseId ? getRequisiteIds(selectedCourseId, courseMap) : null,
-    [selectedCourseId, courseMap]);
+    const highlightedIds = useMemo(
+        function(){
+            const allHighlights = new Set<string>();
+            selectedIds.forEach(
+                function(id){
+                    const materia = courseMap.get(id);
+                    if(materia && materia.recomendacoes){
+                        materia.recomendacoes.forEach(
+                            function(reqId){
+                                allHighlights.add(reqId);
+                            }
+                        );
+                    }
+                }
+            );
+            return allHighlights;
+        },
+        [selectedIds, courseMap]
+    );
 
     const onNodeClick = 
-        function(event: React.MouseEvent, node: any){
-            setSelectedCourseId(node.id);
+        function(event: React.MouseEvent, node: Node<Disciplina>){
+            setSelectedCourseIds(
+                function(prevSet){
+                    const nextSet = new Set(prevSet);
+                    if(nextSet.has(node.id)){
+                        nextSet.delete(node.id);
+                    }
+                    else{
+                        nextSet.add(node.id);
+                 
+                    }
+                    return nextSet;
+                }
+            );
         };
 
     const onPaneClick =
         function(){
-            setSelectedCourseId(null);
+            setSelectedCourseIds(new Set());
         };
 
-    const levelMap = useMemo(() => calcLevels(materias as Disciplina[]), []);
-
-    const maxPerRow = window.innerWidth < 768 ? 3 : 5;
+    const levelMap = useMemo(
+        function(){
+            return calcLevels(materias as Disciplina[]);
+        }, 
+        []
+    );
 
     const {nodes, edges} = useMemo(
         function(){
@@ -60,51 +102,22 @@ function App() {
 
             const initialNodes = sortedMaterias.map(
                 function(materia, index){
-                    return createNode(materia, index, selectedCourseId, selectedPath);
+                    return createNode(materia, index, selectedIds, highlightedIds, maxPerRow);
                 }
             );
 
             const initialEdges = materias.flatMap(
                 function(materia){
-                    return createEdges(materia, courseMap, selectedPath);
+                    return createEdges(materia, selectedIds);
                 }
             );
 
             return {nodes: initialNodes, edges: initialEdges};
 
         },
-        [materias, levelMap, selectedPath, selectedCourseId, courseMap] 
+        [materias, levelMap, selectedIds, highlightedIds, courseMap, maxPerRow] 
     );
 
-    const initialViewport = useMemo(() => {
-        const zoom = 1.1;
-        const MAX_PER_ROW = 5;
-        const NODE_WIDTH = 210;
-        
-        const graphWidth = MAX_PER_ROW * NODE_WIDTH;
-        
-        const centerX = (window.innerWidth / 2) - (graphWidth * zoom / 2);
-        
-        return { x: centerX, y: 50, zoom };
-    }, []);
-
-    //é o que fiz por ultimo
-    const translateExtent = useMemo(
-        function() {
-            const ROW_HEIGHT = 95; 
-            const NODE_WIDTH = 220;
-            const totalRows = Math.ceil(materias.length / maxPerRow);
-
-            const minX = -200;
-            const minY = -100;
-            const maxX = (maxPerRow * NODE_WIDTH) + 200;
-            const maxY = (totalRows * ROW_HEIGHT) + 200;
-
-            // Forçamos o tipo para a tupla que o React Flow exige
-            return [[minX, minY], [maxX, maxY]] as [[number, number], [number, number]];
-        }, 
-        [materias.length, maxPerRow]
-    );
 
     return(
         <div style = {containerStyle}>
@@ -112,9 +125,9 @@ function App() {
             nodes = {nodes} 
             edges = {edges}
             nodesConnectable = {false}
-            nodesDraggable={true}
+            nodesDraggable={false}
             deleteKeyCode={null}
-
+            
             onNodeClick={onNodeClick}
             onPaneClick={onPaneClick}
             
@@ -125,11 +138,12 @@ function App() {
             minZoom={0.8}
 
             style={{backgroundColor: '#1e293b'}}
-            
-            proOptions={{ hideAttribution: true }}>
 
-                <Background color="#888282ff" gap={20}/>
-                <Controls/>
+            proOptions={{hideAttribution: true}}
+            >
+
+            <Background color="#888282ff" gap={20}/>
+            <Controls/>
             </ReactFlow >
         </div>
     )
