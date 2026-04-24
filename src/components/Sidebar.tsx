@@ -1,5 +1,9 @@
 import React from 'react';
 
+import courses from '../data/courses.json';
+
+import '../styles/sidebar.css';
+
 interface SidebarProps {
   selectedCourse: string;
   onSelectCourse: (courseId: string) => void;
@@ -13,12 +17,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
     isCollapsed, 
     onToggleCollapse 
 }) => {
-
-  const courses = [
-    { id: 'bcc', name: 'Ciência da Computação (BCC)' },
-    { id: 'bct', name: 'Bacharelado em C&T (BCT)', disabled: true },
-    { id: 'bnh', name: 'Bases Neurobiológicas', disabled: true },
-  ];
 
   return (
     <>
@@ -36,25 +34,40 @@ export const Sidebar: React.FC<SidebarProps> = ({
       {/* A Barra Lateral */}
       <aside className={`sidebar ${isCollapsed ? 'collapsed' : ''}`}>
         <div className="sidebar-header">
-          <h2>UFABC FLUX</h2>
+          <h3>Selecione o Curso</h3>
           <button 
               className="toggle-btn" 
               onClick={onToggleCollapse}
               title="Fechar menu"
           >
-            «
+            {/* SVG limpo, sem dependências. Usa 'currentColor' para herdar a cor do CSS */}
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              width="20" 
+              height="20" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              stroke="currentColor" 
+              strokeWidth="2.5" 
+              strokeLinecap="round" 
+              strokeLinejoin="round"
+            >
+              <path d="m15 18-6-6 6-6"/>
+            </svg>
           </button>
         </div>
 
-        <p className="sidebar-subtitle">Selecione o Curso</p>
 
         <nav className="sidebar-nav">
           {courses.map((course) => (
             <button
-              key={course.id}
-              className={`course-btn ${selectedCourse === course.id ? 'active' : ''}`}
-              onClick={() => !course.disabled && onSelectCourse(course.id)}
+              key={course.name}
+              className={`course-btn ${selectedCourse === course.name ? 'active' : ''}`}
+              onClick={() => !course.disabled && onSelectCourse(course.name)}
               disabled={course.disabled}
+
+              title={course.name}
+
             >
               {course.name}
             </button>

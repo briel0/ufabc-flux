@@ -139,6 +139,11 @@ function App() {
         }
     }, [isSidebarCollapsed, rfInstance]);
 
+    const isMobile = window.innerWidth <= 768;
+
+    const dynamicMinZoom = isMobile ? 0.4 : 1.1;
+    const dynamicMaxZoom = isMobile ? 1.0 : 1.4;
+
     return(
         <div className="app-layout">
             
@@ -163,8 +168,8 @@ function App() {
                     defaultViewport={initialViewport}
                     translateExtent={translateExtent}
 
-                    maxZoom={1.4}
-                    minZoom={1.1}
+                    maxZoom={dynamicMaxZoom}
+                    minZoom={dynamicMinZoom}
 
                     style={{backgroundColor: '#1e293b'}}
                     proOptions={{hideAttribution: true}}

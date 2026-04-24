@@ -1,3 +1,6 @@
+/* =========================================
+   FUNDAÇÃO & RESET
+   ========================================= */
 * {
     margin: 0;
     padding: 0;
@@ -7,8 +10,8 @@
 html, body, #root {
     width: 100%;
     height: 100%;
-    overflow: hidden; /* Evita scrolls indesejados na página inteira */
-    background-color: var(--bg-canvas); /* Garante que não haja flashes brancos no loading */
+    overflow: hidden;
+    background-color: var(--bg-canvas, #0f172a); 
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
@@ -19,7 +22,6 @@ html, body, #root {
 /* =========================================
    LAYOUT PRINCIPAL
    ========================================= */
-
 .app-layout {
     display: flex;
     width: 100%;
@@ -30,158 +32,4 @@ html, body, #root {
     flex-grow: 1;
     position: relative;
     height: 100%;
-}
-
-/* =========================================
-   SIDEBAR MINIMALISTA (Dark Mode)
-   ========================================= */
-
-/* =========================================
-   SIDEBAR MINIMALISTA (Dark Mode)
-   ========================================= */
-
-.sidebar {
-    width: 280px;
-    background-color: #0f172a;
-    border-right: 1px solid #1e293b;
-    display: flex;
-    flex-direction: column;
-    padding: 1.5rem;
-    z-index: 10;
-    color: #e2e8f0;
-    
-    /* Anima largura, padding e borda juntos para sumir suavemente */
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    overflow: hidden; 
-    white-space: nowrap; 
-}
-
-/* Quando retraída, a barra SOME e não ocupa espaço no DOM */
-.sidebar.collapsed {
-    width: 0;
-    padding-left: 0;
-    padding-right: 0;
-    border-right-color: transparent;
-}
-
-/* =========================================
-   BOTÃO FLUTUANTE (Hamburguer)
-   ========================================= */
-
-.floating-toggle-btn {
-    position: absolute;
-    top: 1.5rem;
-    left: 1.5rem;
-    z-index: 20; /* Garante que fique acima do React Flow */
-    background-color: #0f172a;
-    color: #cbd5e1;
-    border: 1px solid #1e293b;
-    border-radius: 6px;
-    padding: 0.5rem 0.75rem;
-    font-size: 1.25rem;
-    line-height: 1;
-    cursor: pointer;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
-    transition: all 0.2s ease;
-}
-
-.floating-toggle-btn:hover {
-    background-color: #1e293b;
-    color: #f8fafc;
-    border-color: #3b82f6;
-}
-
-/* Componentes internos da barra (já estavam configurados) */
-.sidebar-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
-
-.sidebar-header h2 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    letter-spacing: -0.5px;
-    color: #f8fafc;
-}
-
-.sidebar-subtitle {
-    font-size: 0.85rem;
-    color: #94a3b8;
-    margin-top: 4px;
-    margin-bottom: 2rem;
-}
-
-.toggle-btn {
-    background: transparent;
-    border: none;
-    color: #94a3b8;
-    font-size: 1.5rem;
-    cursor: pointer;
-    line-height: 1;
-    padding: 4px 8px;
-    border-radius: 4px;
-    transition: background-color 0.2s, color 0.2s;
-}
-
-.toggle-btn:hover {
-    background-color: #1e293b;
-    color: #f8fafc;
-}
-/* Navegação e Botões de Curso */
-.sidebar-nav {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    flex-grow: 1;
-    width: 100%;
-    margin-top: 2rem;
-}
-
-.course-btn {
-    text-align: left;
-    padding: 0.75rem 1rem;
-    border: none;
-    background: transparent;
-    border-radius: 6px;
-    font-size: 0.95rem;
-    color: #cbd5e1;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    width: 100%;
-}
-
-/* Quando retraído, centraliza o texto curto (ex: "BCC") */
-.sidebar.collapsed .course-btn {
-    text-align: center;
-    padding: 0.75rem 0;
-    font-weight: 600;
-    font-size: 0.85rem;
-}
-
-.course-btn:hover:not(:disabled) {
-    background-color: #1e293b;
-    color: #f8fafc;
-}
-
-.course-btn.active {
-    background-color: #334155;
-    color: #fff;
-    font-weight: 500;
-    box-shadow: inset 2px 0 0 #3b82f6;
-}
-
-.course-btn:disabled {
-    color: #475569;
-    cursor: not-allowed;
-}
-
-.sidebar-footer {
-    margin-top: auto;
-    color: #64748b;
-    font-size: 0.8rem;
-    border-top: 1px solid #1e293b;
-    padding-top: 1rem;
-    width: 100%;
 }
