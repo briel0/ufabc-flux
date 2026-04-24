@@ -20,41 +20,59 @@ Siga esta ordem exata para garantir a integridade das Chaves Estrangeiras:
 Cria a estrutura das tabelas (`Cursos`, `Disciplinas`, `curso_disciplinas` e `requisitos`).
 
 ```bash
-sqlite3 ufabc.db < sql/schema.sql
+sqlite3 data.db < sql/squema.sql
 ```
 
-### Passo 1: Extração da Lista de Cursos
+### Passo 1
 
 Geração do arquivo bruto `raw/lista-de-cursos.txt` a partir do portal da Prograd. Este passo é manual e o arquivo já se encontra no repositório.
 
-### Passo 2: Parsing e Ingestão de Cursos
+### Passo 2
 
-Utiliza o parser em C++ para gerar o arquivo SQL de inserção e popular a tabela `Cursos`.
+Utiliza o parser em C++ para gerar o arquivo SQL de inserção (`sql/output.sql`) e popular a tabela `Cursos`.
 
 ```bash
 # 1. Compilar o parser
 g++ scripts/parsing.cpp -o parser
 
 # 2. Executar e gerar o SQL
-./parser raw/lista-de-cursos.txt > sql/cursos_insert.sql
+./parser < raw/lista-de-cursos.txt > sql/output.sql
 
 # 3. Injetar no banco de dados
-sqlite3 ufabc.db < sql/cursos_insert.sql
+sqlite3 data.db < sql/output.sql
 ```
 
-### Passo 3: Ingestão de Disciplinas e Metadados
+### Passo 3
 
-Lê o arquivo `raw/materiasbcc.json` e popula a tabela `Disciplinas`. O script Node.js é responsável por essa tarefa.
+Lê um arquivo CSV (`materias.csv`, não versionado) e popula a tabela `Disciplinas` com nome e metadados (ementa, bibliografia, etc).
 
 ```bash
-node scripts/import_disciplinas.js
+node scripts/import_csv.js
 ```
 
-### Passo 4: Vínculos e Pré-requisitos (Próximos Passos)
+### Passo 4
 
 Esta etapa ainda está em desenvolvimento e irá:
 - Vincular disciplinas aos seus respectivos cursos na tabela `curso_disciplinas`.
 - Extrair as `recomendações` de cada disciplina para popular a tabela de `requisitos` (as arestas do grafo).
+
+### Passo 5
+
+Esta etapa utiliza o script `import_bcc_obrigatorias.js` para popular o banco de dados com as disciplinas obrigatórias do Bacharelado em Ciência da Computação, lendo os dados do arquivo `raw/bcc/materiasbcc.json`.
+
+```bash
+node scripts/import_bcc_obrigatorias.js
+```
+
+### Passo 5
+
+Esta etapa utiliza o script `import_bcc_limitadas.js` para popular o banco de dados com as disciplinas obrigatórias do Bacharelado em Ciência da Computação, lendo os dados do arquivo `raw/bcc/limitadas-bcc.txt`.
+
+```bash
+node scripts/import_bcc_limitadas.js
+```
+
+passo 6 - criei o import requisitos pra popular a tabela de requisitos a partir do materias.csv
 
 📌 Notas de Manutenção
 

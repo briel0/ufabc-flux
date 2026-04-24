@@ -1,0 +1,74 @@
+MCZA035-17 Algoritmos Probabilísticos
+MCZA001-13 Análise de Projetos
+MCCC???-23 Análise de Algoritmos III
+MCTB007-17 Anéis e Corpos
+MCZA002-17 Aprendizado de Máquina
+MCZA003-17 Arquitetura de Computadores de Alto Desempenho
+MCZA004-13 Avaliação de Desempenho de Redes
+MCZA005-17 Banco de Dados de Apoio à Tomada de Decisão
+MCTB009-17 Cálculo Numérico
+MCZA037-17 Combinatória Extremal
+MCZA006-17 Computação Evolutiva e Conexionista
+MCZA053-22 Desenvolvimento Guiado por Tipos
+ESZG013-17 Empreendedorismo
+MCZA007-13 Empreendedorismo e Desenvolvimento de Negócios
+ESZI030-17 Gerenciamento e Interoperabilidade de Redes
+MCZA016-17 Gestão de projetos de software
+ESZG019-17 Gestão Estratégica e Organizacional
+MCTB018-17 Grupos
+MCZB012-13 Inferência Estatística
+ESZI013-17 Informática Industrial
+ESZB022-17 Introdução à Bioinformática
+MCZB015-13 Introdução à Criptografia
+MCZB018-13 Introdução à Modelagem e Processos Estocásticos
+MCTC021-20 Neurociência Teórica e Computacional
+MCZA032-17 Introdução à Programação de Jogos
+ESZI034-17 Jogos Digitais: Aspectos Técnicos e Aplicações
+MCZA010-13 Laboratório de Engenharia de Software
+MCZA011-17 Laboratório de Redes
+MCZA012-13 Laboratório de Sistemas Operacionais
+MCZA013-13 Lógicas não Clássicas
+MCCC???-23 Otimização Não-Linear
+MCCC013-23 Otimização Linear
+MCZA015-13 Mineração de Dados
+ESTG013-17 Pesquisa Operacional
+ESZI022-17 Planejamento de Redes de Informação
+MCZA038-17 Prática Avançada de Programação A
+MCZA039-17 Prática Avançada de Programação B
+MCZA040-17 Prática Avançada de Programação C
+MCZA041-17 Processamento de Imagens Utilizando GPU
+MCZA017-13 Processamento de Linguagem Natural
+MCTC022-15 Processamento de Sinais Neurais
+MCZA018-17 Processamento Digital de Imagens
+MCZA042-17 Processo e Desenvolvimento de Softwares Educacionais
+MCZA033-17 Programação Avançada para Dispositivos Móveis
+ESZI033-17 Programação de Dispositivos Móveis
+MCZA019-17 Programação para Web
+MCZA020-13 Programação Paralela
+MCZA034-17 Programação Segura
+MCZA054-22 Projeto Avançado em Sistemas de Computação
+MCZA021-17 Projeto de Redes
+MCZA022-17 Projeto Interdisciplinar
+MCZA023-17 Redes Convergentes
+ESZI029-17 Redes WAN de Banda Larga
+MCZA024-17 Redes sem Fio
+MCZA044-17 Robótica e Sistemas Inteligentes
+MCZA045-17 Robótica Educacional
+MCZA025-13 Segurança em Redes
+MCZA046-17 Semântica de Linguagem de Programação
+MCZA026-17 Sistemas de Gerenciamento de Banco de Dados
+MCZA027-17 Sistemas de Informação
+ESZI014-17 Sistemas Inteligentes
+MCZA028-13 Sistemas Multiagentes
+MCZA029-13 Sistemas Multimídia
+MCZA047-17 Sistemas Multi-Robôs Sociais
+MCZA050-17 Técnicas Avançadas de Programação
+NHZ5019-22 Tecnologias da Informação e Comunicação na Educação
+MCZB033-17 Teoria da Recursão e Computabilidade
+MCZB032-13 Teoria das Filas
+MCZA048-17 Teoria Espectral de Grafos
+MCZA049-17 Tópicos Emergentes em Banco de Dados
+MCZA030-17 Vida Artificial na Computação
+ESZA019-17 Visão Computacional
+MCZA052-22 Vizualização de Dados e Informações
+MCZA031-13 Web Semântica

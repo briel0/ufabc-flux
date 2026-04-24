@@ -1,11 +1,13 @@
-import ReactFlow, {Background, Controls, Node} from 'reactflow';
+import ReactFlow, {Background, Controls, Node, ReactFlowInstance} from 'reactflow';
 import 'reactflow/dist/style.css'
+
 import materias from './data/materiasbcc.json';
+
 import {Disciplina} from './types';
 
 import {calcLevels} from './utils/graph/curriculum-logic';
 
-import {useState, useMemo} from 'react';
+import {useState, useMemo, useEffect} from 'react';
 
 import {createNode, createEdges} from './utils/graph/graph-factory';
 
@@ -15,9 +17,14 @@ import './styles/index.css'
 
 import { useGraphViewport } from './utils/graph/viewport-config';
 
-const containerStyle = {width: '100%', height: '100vh'};
+import { Sidebar } from './components/Sidebar';
 
 function App() {
+
+    const [currentCourse, setCurrentCourse] = useState<string>('bcc');
+
+    const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+    const [rfInstance, setRfInstance] = useState<ReactFlowInstance | null>(null);
 
     const courseMap = useMemo(
         function(){
@@ -118,33 +125,57 @@ function App() {
         [materias, levelMap, selectedIds, highlightedIds, courseMap, maxPerRow] 
     );
 
+    useEffect(() => {
+        if (rfInstance) {
+            // Timer sintonizado com a transição do CSS (300ms)
+            const timeout = setTimeout(() => {
+                rfInstance.fitView({ 
+                    duration: 600, 
+                    padding: 0.1 
+                });
+            }, 350); 
+
+            return () => clearTimeout(timeout);
+        }
+    }, [isSidebarCollapsed, rfInstance]);
 
     return(
-        <div style = {containerStyle}>
-            <ReactFlow 
-            nodes = {nodes} 
-            edges = {edges}
-            nodesConnectable = {false}
-            nodesDraggable={false}
-            deleteKeyCode={null}
+        <div className="app-layout">
             
-            onNodeClick={onNodeClick}
-            onPaneClick={onPaneClick}
+            <Sidebar 
+                selectedCourse={currentCourse} 
+                onSelectCourse={setCurrentCourse} 
+                isCollapsed={isSidebarCollapsed}
+                onToggleCollapse={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
+            />
             
-            defaultViewport={initialViewport}
-            translateExtent={translateExtent}
+            <main className="flow-container">
+                <ReactFlow 
+                    nodes={nodes} 
+                    edges={edges}
+                    nodesConnectable={false}
+                    nodesDraggable={false}
+                    deleteKeyCode={null}
+                    
+                    onNodeClick={onNodeClick}
+                    onPaneClick={onPaneClick}
+                    
+                    defaultViewport={initialViewport}
+                    translateExtent={translateExtent}
 
-            maxZoom={1.4}
-            minZoom={1.1}
+                    maxZoom={1.4}
+                    minZoom={1.1}
 
-            style={{backgroundColor: '#1e293b'}}
+                    style={{backgroundColor: '#1e293b'}}
+                    proOptions={{hideAttribution: true}}
 
-            proOptions={{hideAttribution: true}}
-            >
+                    onInit={setRfInstance}
 
-            <Background color="#888282ff" gap={20}/>
-            <Controls/>
-            </ReactFlow >
+                >
+                    <Background color="#888282ff" gap={20}/>
+                    <Controls/>
+                </ReactFlow>
+            </main>
         </div>
     )
     
