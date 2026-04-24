@@ -49,8 +49,12 @@ export function useGraphViewport(materiasLength: number) {
     const initialViewport = useMemo(
         function(){
             const zoom = 1.1;
-            const graphWidth = maxPerRow * GRAPH_CONFIG.NODE_WIDTH;
-            const centerX = (windowWidth / 2) - (graphWidth * zoom / 2);
+
+            const CARD_PHYSICAL_WIDTH = 210;
+
+            const trueGraphWidth = ((maxPerRow - 1) * GRAPH_CONFIG.NODE_WIDTH) + CARD_PHYSICAL_WIDTH;
+            
+            const centerX = (windowWidth / 2) - (trueGraphWidth * zoom / 2);
             return { x: centerX, y: 50, zoom };
         }, 
     [maxPerRow, windowWidth]);

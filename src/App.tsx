@@ -135,7 +135,7 @@ function App() {
             translateExtent={translateExtent}
 
             maxZoom={1.4}
-            minZoom={0.8}
+            minZoom={1.1}
 
             style={{backgroundColor: '#1e293b'}}
 
