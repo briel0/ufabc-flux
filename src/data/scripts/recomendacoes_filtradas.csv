@@ -1,0 +1,117 @@
+SIGLA,DISCIPLINA,RECOMENDAÇÃO
+MCTB001-17,Álgebra Linear,Geometria Analítica
+MCCC001-23,Algoritmos e Estruturas de Dados I,Programação Estruturada; Processamento da Informação
+MCCC002-23,Algoritmos e Estruturas de Dados II,Algoritmos e Estruturas de Dados I; Programação Estruturada; Processamento da Informação
+MCCC003-23,Algoritmos em Grafos,Natureza da Informação; Funções de Uma Variável; Algoritmos e Estruturas de Dados I; Algoritmos e Estruturas de Dados II; Programação Estruturada; Matemática Discreta I; Matemática Discreta II
+MCZA035-17,Algoritmos Probabilísticos,Algoritmos e Estruturas de Dados II; Introdução à Probabilidade e à Estatística
+MCCC004-23,Análise de Algoritmos I,Matemática Discreta II; Matemática Discreta I; Algoritmos em Grafos; Algoritmos e Estruturas de Dados I; Algoritmos e Estruturas de Dados II; Programação Estruturada; Processamento da Informação; Funções de Uma Variável
+MCCC005-23,Análise de Algoritmos II,Análise de Algoritmos I; Algoritmos em Grafos; Matemática Discreta I; Matemática Discreta II; Algoritmos e Estruturas de Dados I; Algoritmos e Estruturas de Dados II; Programação Estruturada; Processamento da Informação; Funções de Uma Variável
+MCZA001-13,Análise de Projetos,Não há
+MCZA002-17,Aprendizado de Máquina,Funções de Várias Variáveis; Introdução à Probabilidade e à Estatística; Álgebra Linear; Algoritmos; Estruturas de Dados I; Programação Estruturada; Processamento da Informação; Matemática Discreta
+MCTA004-17,Arquitetura de Computadores,Sistemas Digitais; Circuitos Digitais; Natureza da Informação; Fenômenos Eletromagnéticos; Algoritmos e Estruturas de Dados I; Programação Estruturada; Processamento da Informação
+MCZA003-17,Arquitetura de Computadores de Alto Desempenho,Arquitetura de Computadores
+MCZA004-13,Avaliação de Desempenho de Redes,Redes de Computadores
+MCZA005-17,Banco de Dados de Apoio à Tomada de Decisão,Banco de Dados; Inteligência Artificial
+BCS0001-25,Base Experimental das Ciências Naturais,Não há
+BIS0005-15,Bases Computacionais da Ciência,Não há
+BIR0004-15,Bases Epistemológicas da Ciência Moderna,Não há
+BIS0003-15,Bases Matemáticas,Não há
+BCL0306-15,Biodiversidade: Interações entre organismos e ambiente,Não há
+BCL0308-15,"Bioquímica: estrutura, propriedade e funções de biomoléculas",Estrutura da Matéria; Transformações Químicas
+MCTB009-17,Cálculo Numérico,Funções de Uma Variável; Processamento da Informação
+BIR0603-15,"Ciência, Tecnologia e Sociedade",Não há
+MCTA006-17,Circuitos Digitais,Natureza da Informação; Fenômenos Eletromagnéticos
+MCZA037-17,Combinatória Extremal,Matemática Discreta
+MCCC006-23,Compiladores e Interpretadores,Linguagens Formais e Autômatos; Matemática Discreta II; Matemática Discreta I; Funções de Uma Variável; Análise de Algoritmos II; Análise de Algoritmos I; Algoritmos em Grafos; Algoritmos e Estruturas de Dados II; Algoritmos e Estruturas de Dados I; Programação Estruturada; Processamento da Informação
+MCZA006-17,Computação Evolutiva e Conexionista,Inteligência Artificial
+MCCC007-23,Computação Gráfica,Algoritmos e Estrutura de Dados I; Programação Estruturada; Processamento da Informação; Programação Orientada a Objetos; Geometria Analítica
+MCTA009-13,"Computadores, Ética e Sociedade",Não há
+BCM0506-15,Comunicação e Redes,Processamento da Informação
+MCZA053-22,Desenvolvimento Guiado por Tipos,Processamento da Informação; Paradigmas de Programação; Programação Estruturada
+ESZG013-17,Empreendedorismo,Não há
+MCZA007-13,Empreendedorismo e Desenvolvimento de Negócios,Não há
+MCTA033-15,Engenharia de Software,Programação Orientada a Objetos; Programação Estruturada; Processamento da Informação
+BIK0102-15,Estrutura da Matéria,Não há
+BIQ0602-15,Estrutura e Dinâmica Social,Não há
+BIL0304-15,Evolução e Diversificação da Vida na Terra,Não há
+BCJ0203-15,Fenômenos Eletromagnéticos,Bases Matemáticas; Fenômenos Mecânicos ; Funções de Uma Variável ; Funções de Várias Variáveis; Geometria Analítica; Introdução às Equações Diferenciais Ordinárias
+BCJ0204-15,Fenômenos Mecânicos,Geometria Analitica; Funções de Uma Variável; Bases Matemáticas
+BCJ0205-15,Fenômenos Térmicos,Estrutura da Matéria; Fenômenos Mecânicos; Funções de uma Variável
+BCK0103-15,Física Quântica,Estrutura da Matéria; Fenômenos Mecânicos; Fenômenos Térmicos; Fenômenos Eletromagnéticos
+BCN0402-15,Funções de Uma Variável,Bases Matemáticas
+BCN0407-15,Funções de Várias Variáveis,Geometria Analitica; Funções de Uma Variável
+BCN0404-15,Geometria Analítica,Bases Matemáticas
+ESZI030-17,Gerenciamento e Interoperabilidade de Redes,Redes de Computadores
+MCZA016-17,Gestão de Projetos de Software,Processamento da Informação; Engenharia de Software
+ESZG019-17,Gestão Estratégica e Organizacional,Não há
+MCZB012-13,Inferência Estatística,Cálculo de Probabilidade; Introdução à Inferência Estatística
+ESZI013-17,Informática Industrial,Eletrônica Digital
+MCCC008-23,Inteligência Artificial,Algoritmos e Estruturas de Dados I; Programação Estruturada; Processamento da Informação
+MCZA008-17,Interação Humano-Computador,Processamento da Informação
+ESZB022-17,Introdução à Bioinformática,"Biologia Celular; Bioquímica:estrutura, propriedade e funções de biomoléculas"
+MCZB015-13,Introdução à Criptografia,Matemática Discreta; Teoria Aritmética dos Números
+BIN0406-15,Introdução à Probabilidade e à Estatística,Funções de Uma Variável
+MCZA032-17,Introdução à Programação de Jogos,Geometria Analítica; Algoritmos e Estruturas de Dados I; Computação Gráfica
+BCN0405-15,Introdução às Equações Diferenciais Ordinárias,Funções de Várias Variáveis
+ESZI034-17,Jogos Digitais: Aspectos Técnicos e Aplicações,Programação Baseada em Componentes para Jogos ou Programação Orientada a Objetos
+MCZA010-13,Laboratório de Engenharia de Software,Engenharia de Software
+MCZA011-17,Laboratório de Redes,Redes de Computadores
+MCZA012-13,Laboratório de Sistemas Operacionais,Sistemas Operacionais
+MCCC009-23,Linguagens Formais e Autômatos,Matemática Discreta II; Matemática Discreta I; Funções de Uma Variável; Análise de Algoritmos II; Análise de Algoritmos I; Algoritmos em Grafos; Algoritmos e Estruturas de Dados II; Algoritmos e Estruturas de Dados I; Programação Estruturada; Processamento da Informação
+MCZA013-13,Lógicas Não Clássicas,Lógica Básica
+MCTB019-17,Matemática Discreta,Funções de Uma Variável
+MCCC010-23,Matemática Discreta II,Funções de Uma Variável; Matemática Discreta I
+MCZA015-13,Mineração de Dados,Inteligência Artificial; Banco de Dados
+MCCC012-23,Modelagem de Banco de Dados,Programação Orientada a Objetos; Programação Estruturada; Processamento da Informação
+BCM0504-15,Natureza da Informação,Bases Computacionais da Ciência
+MCCC013-23,Otimização Linear,Álgebra Linear; Funções de Várias Variáveis; Processamento da Informação; Matemática Discreta
+ESZI022-17,Planejamento de Redes de Informação,Comunicação e Redes
+MCZA038-17,Prática Avançada de Programação A,Algoritmos e Estruturas de Dados I
+MCZA039-17,Prática Avançada de Programação B,Análise de Algoritmos
+MCZA040-17,Prática Avançada de Programação C,Análise de Algoritmos
+BCM0505-22,Processamento da Informação,Bases Computacionais da Ciência
+MCZA041-17,Processamento de Imagens Utilizando GPU,Matemática Discreta; Algoritmos e Estruturas de Dados I
+MCZA017-13,Processamento de Linguagem Natural,Inteligência Artificial
+MCZA018-17,Processamento Digital de Imagens,Processamento da Informação
+MCZA042-17,Processo e Desenvolvimento de Softwares Educacionais,Processamento da Informação
+MCZA033-17,Programação Avançada para Dispositivos Móveis,Algoritmos e Estruturas de Dados I; Programação Orientada a Objetos; Programação para Web
+ESZI033-17,Programação de Dispositivos Móveis,Programação Estruturada
+MCTA028-15,Programação Estruturada,Processamento da Informação
+MCCC015-23,Programação Funcional,Algoritmos e Estrutura de Dados I; Programação Estruturada; Processamento da Informação
+MCTA018-13,Programação Orientada a Objetos,Programação Estruturada; Processamento da Informação
+MCZA019-17,Programação para Web,Programação Orientada a Objetos; Banco de Dados
+MCZA020-13,Programação Paralela,Paradigmas de Programação
+MCZA034-17,Programação Segura,Algoritmos e Estruturas de Dados I
+MCZA054-22,Projeto Avançado em Sistemas de Computação,Algoritmos e Estruturas de Dados I; Circuitos Digitais; Sistemas Digitais; Arquitetura de Computadores; Sistemas Operacionais; Compiladores
+MCZA021-17,Projeto de Redes,Redes de Computadores
+BCS0002-25,Projeto Dirigido,Não há
+MCZA022-17,Projeto Interdisciplinar,Não há
+MCZA023-17,Redes Convergentes,Redes de Computadores
+MCTA022-17,Redes de Computadores,Programação Estruturada; Processamento da Informação
+MCZA024-17,Redes sem Fio,Redes de computadores
+ESZI029-17,Redes WAN de Banda Larga,Redes de Computadores
+MCZA044-17,Robótica e Sistemas Inteligentes,Programação Orientada a Objetos; Inteligência Artificial
+MCZA045-17,Robótica Educacional,Programação Orientada a Objetos; Inteligência Artificial
+MCTA023-17,Segurança de Dados,Redes de Computadores; Programação Estruturada; Processamento da Informação
+MCZA025-13,Segurança em Redes,Redes de Computadores
+MCZA046-17,Semântica de Linguagem de Programação,Programação Orientada a Objetos; Lógica Básica; Linguagens Formais e Automata
+MCZA026-17,Sistemas de Gerenciamento de Banco de Dados,Banco de Dados
+MCZA027-17,Sistemas de Informação,Não há
+MCTA024-13,Sistemas Digitais,Circuitos Digitais; Natureza da Informação; Fenômenos Eletromagnéticos.
+MCTA025-13,Sistemas Distribuídos,Redes de Computadores; Algoritmos e Estruturas de Dados I;  Algoritmos e Estruturas de Dados II; Programação Estruturada; Processamento da Informação; Programação Orientada a Objetos; Sistemas Operacionais; Arquitetura de Computadores; Sistemas Digitais; Circuitos Digitais; Natureza da Informação; Fenômenos Eletromagnéticos
+ESZI014-17,Sistemas Inteligentes,Programação Estruturada; Álgebra Linear
+MCZA028-13,Sistemas Multiagentes,Processamento da Informação; Programação Orientada a Objetos
+MCZA029-13,Sistemas Multimídia,Computação Gráfica
+MCZA047-17,Sistemas Multi-Robôs Sociais,Inteligência Artificial; Sistemas Multiagentes
+MCTA026-13,Sistemas Operacionais,Arquitetura de Computadores; Sistemas Digitais; Circuitos Digitais; Natureza da Informação; Fenômenos Eletromagnéticos; Algoritmos e Estruturas de Dados II; Algoritmos e Estruturas de Dados I; Programação Estruturada; Processamento da Informação
+MCZA050-17,Técnicas Avançadas de Programação,Algoritmos e Estruturas de Dados I
+NHZ5019-22,Tecnologias da Informação e Comunicação na Educação,Não há
+MCZB033-17,Teoria da Recursão e Computabilidade,Linguagens Formais e Automata ou Teoria Aritmética dos Números; Matemática Discreta
+MCZB032-13,Teoria das Filas,Cálculo de Probabilidade
+MCZA048-17,Teoria Espectral de Grafos,Álgebra Linear; Teoria dos Grafos
+MCZA049-17,Tópicos Emergentes em Banco de Dados,Banco de Dados
+BCL0307-15,Transformações Químicas,Estrutura da Matéria
+MCZA030-17,Vida Artificial na Computação,Não há
+ESZA019-17,Visão Computacional,Fundamentos de Robótica
+MCZA052-22,Vizualização de Dados e Informações,Algoritmos e Estruturas de Dados I; Banco de Dados; Programação Orientada a Objetos
+MCZA031-13,Web Semântica,Inteligência Artificial

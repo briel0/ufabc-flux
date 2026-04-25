@@ -1,30 +1,28 @@
-# React + TypeScript + Vite
+# 🚀 UFABC Flux
+UFABC Flux é uma ferramenta de visualização interativa para as matrizes curriculares da Universidade Federal do ABC. O projeto permite que os alunos naveguem pelas dependências de disciplinas (pré-requisitos) de forma visual, facilitando o planejamento acadêmico e a tomada de decisão durante os períodos de matrícula.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## ✨ Funcionalidades
+- **Grafo Interativo:** Visualização clara das conexões entre disciplinas.
 
-Currently, two official plugins are available:
+- **Destaque de Dependências:** Ao selecionar ou passar o mouse em um nó, o fluxo de pré-requisitos é iluminado.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Interface Minimalista:** Design focado em produtividade, com tema escuro inspirado em ambientes de desenvolvimento.
 
-## Expanding the ESLint configuration
+- **Filtros Inteligentes:** (Em desenvolvimento) Capacidade de visualizar fluxos específicos de cursos (BCT, BCC, etc).
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+<div align="center">
+  <img src="assets/image.png" alt="UFABC Flux Preview" width="600px">
+</div>
 
-- Configure the top-level `parserOptions` property like this:
+## 🛠️ Tecnologias Utilizadas
+O projeto foi construído focando em performance e manutenibilidade:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+- **React + Vite & JavaScript & TypeScript:** Desenvolvimento da SPA (Single Page Application) com foco em performance e segurança de tipos.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- **React Flow:** Biblioteca core para renderização e interação com o grafo de disciplinas.
+
+- **C++ (CPP):** Linguagem escolhida para o desenvolvimento do parser customizado, responsável por processar e validar as complexas regras de pré-requisitos extraídas dos documentos oficiais.
+
+- **SQL:** Utilizado para a modelagem relacional das matrizes curriculares, garantindo a integridade dos dados entre disciplinas, quadrimestres e créditos.
+
+- **CSS Moderno:** Estilização minimalista e reativa com foco em feedback visual de baixa latência.

@@ -1,11 +1,7 @@
-import ReactFlow, {Background, Controls, Node, ReactFlowInstance} from 'reactflow';
+import ReactFlow, {Background, Node, ReactFlowInstance} from 'reactflow';
 import 'reactflow/dist/style.css'
 
-import materias from './data/materias-bcc.json';
-
 import {Disciplina} from './types';
-
-import {calcLevels} from './utils/graph/curriculum-logic';
 
 import {useState, useMemo, useEffect} from 'react';
 
@@ -18,6 +14,8 @@ import './styles/index.css'
 import { useGraphViewport } from './utils/graph/viewport-config';
 
 import { Sidebar } from './components/Sidebar';
+
+import { AboutModal } from './components/Aboutmodal';
 
 const slugify = (text: string) => {
     return text
@@ -34,11 +32,12 @@ const slugify = (text: string) => {
 function App() {
 
     const [currentCourse, setCurrentCourse] = useState<string>('bacharelado-em-ciencia-e-tecnologia');
-
     const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+    const [selectedIds, setSelectedCourseIds] = useState<Set<string>>(new Set());
     const [rfInstance, setRfInstance] = useState<ReactFlowInstance | null>(null);
-
     const [materias, setMaterias] = useState<Disciplina[]>([]);
+    const {maxPerRow, initialViewport, translateExtent} = useGraphViewport(materias.length);
+    const [isAboutOpen, setIsAboutOpen] = useState(false);
 
     const courseMap = useMemo(
         function(){
@@ -50,12 +49,6 @@ function App() {
         },
         [materias]
     ); 
-    
-    const [selectedIds, setSelectedCourseIds] = useState<Set<string>>(new Set());
-    
-    const {maxPerRow, initialViewport, translateExtent} = useGraphViewport(materias.length);
-
-    console.log()
 
     useEffect(() => {
         async function loadCourseData() {
@@ -100,7 +93,7 @@ function App() {
     );
 
     const onNodeClick = 
-        function(event: React.MouseEvent, node: Node<Disciplina>){
+        function(_event: React.MouseEvent, node: Node<Disciplina>){
             setSelectedCourseIds(
                 function(prevSet){
                     const nextSet = new Set(prevSet);
@@ -121,31 +114,10 @@ function App() {
             setSelectedCourseIds(new Set());
         };
 
-    const levelMap = useMemo(
-        function(){
-            return calcLevels(materias as Disciplina[]);
-        }, 
-        []
-    );
-
     const {nodes, edges} = useMemo(
         function(){
-            const sortedMaterias = [...materias].sort(
-                function(a, b){
 
-                    const pesoA = a.isConclusiva ? 1 : 0;
-                    const pesoB = b.isConclusiva ? 1 : 0;
-
-                    // Se uma for conclusiva e a outra não, a conclusiva SEMPRE vai para o final
-                    if (pesoA !== pesoB) {
-                        return pesoA - pesoB;
-                    }
-
-                    return levelMap[a.id] - levelMap[b.id];
-                }
-            );
-
-            const initialNodes = sortedMaterias.map(
+            const initialNodes = materias.map(
                 function(materia, index){
                     return createNode(materia, index, selectedIds, highlightedIds, maxPerRow);
                 }
@@ -160,12 +132,11 @@ function App() {
             return {nodes: initialNodes, edges: initialEdges};
 
         },
-        [materias, levelMap, selectedIds, highlightedIds, courseMap, maxPerRow] 
+        [materias, selectedIds, highlightedIds, courseMap, maxPerRow] 
     );
 
     useEffect(() => {
         if (rfInstance && materias.length > 0) {
-            // Timer sintonizado com a transição do CSS (300ms)
             const timeout = setTimeout(() => {
                 rfInstance.fitView({ 
                     duration: 600, 
@@ -217,7 +188,24 @@ function App() {
                 >
                     <Background color="#888282ff" gap={20}/>
                 </ReactFlow>
+
+                <button 
+                    className="about-btn" 
+                    onClick={() => setIsAboutOpen(true)}
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M12 16v-4"></path>
+                        <path d="M12 8h.01"></path>
+                    </svg>
+                </button>
+
+                <AboutModal 
+                    isOpen={isAboutOpen} 
+                    onClose={() => setIsAboutOpen(false)} 
+                />            
             </main>
+
         </div>
     )
     

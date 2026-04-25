@@ -4,6 +4,10 @@ import {Disciplina} from "../../types";
 Calculates the topological depth (level) for each course in a DAG.
 */
 
+/*
+Out of use
+*/
+
 export function calcLevels(courses: Disciplina[]){
 
     const levels: Record<string, number> = {}

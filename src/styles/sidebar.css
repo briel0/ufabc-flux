@@ -1,6 +1,3 @@
-/* =========================================
-   SIDEBAR (Zen Mode)
-   ========================================= */
 .sidebar {
     width: 360px;
     background-color: #0f172a;
@@ -22,7 +19,6 @@
     border-right-color: transparent;
 }
 
-/* Cabeçalho e Textos */
 .sidebar-header {
     display: flex;
     justify-content: space-between;
@@ -38,7 +34,6 @@
     letter-spacing: -0.5px;
     color: #f8fafc;
     
-    /* 1. Amarramos o line-height para a caixa ter a exata altura da fonte */
     line-height: 1; 
     margin: 0;
 }
@@ -50,7 +45,6 @@
     margin-bottom: 2rem;
 }
 
-/* Botões de Ação (Retrair/Expandir) */
 .toggle-btn {
     background: transparent;
     border: none;
@@ -59,12 +53,10 @@
     border-radius: 4px;
     transition: background-color 0.2s, color 0.2s;
     
-    /* Centralização perfeita para o SVG */
     display: flex;
     align-items: center;
     justify-content: center;
     
-    /* Um botão quadrado invisível para a área de clique ficar confortável */
     width: 32px;
     height: 32px;
     padding: 0;
@@ -98,9 +90,6 @@
     border-color: #3b82f6;
 }
 
-/* =========================================
-   NAVEGAÇÃO (Área Rolável & Scrollbar)
-   ========================================= */
 .sidebar-nav {
     display: flex;
     flex-direction: column;
@@ -129,9 +118,6 @@
     background-color: #475569;
 }
 
-/* =========================================
-   BOTÕES DE CURSO
-   ========================================= */
 .course-btn {
     text-align: left;
     padding: 0.85rem 1rem;
@@ -150,20 +136,17 @@
     position: relative;
 }
 
-/* 1. A LINHA DIVISÓRIA (Sutil e com recuo) */
 .course-btn::after {
     content: "";
     position: absolute;
     bottom: 0;
-    left: 8px;   /* Recuo interno para não tocar as bordas */
+    left: 8px;   
     right: 8px;
     height: 1px;
     background-color: #1e293b;
     transition: opacity 0.2s;
 }
 
-/* 2. O TRUQUE DE MESTRE: Sumir com as linhas vizinhas */
-/* Esconde a linha do botão selecionado */
 .course-btn.active::after {
     opacity: 0;
 }
@@ -172,37 +155,33 @@
     content: "";
     position: absolute;
     left: 0;
-    top: 25%;       /* Centralizado e menor, muito mais elegante */
+    top: 25%;       
     height: 50%;
     width: 4px;
     background-color: #3b82f6;
-    border-radius: 0 4px 4px 0; /* Arredondado apenas na direita para "nascer" da borda */
+    border-radius: 0 4px 4px 0; 
 }
 
-/* Esconde a linha do botão que está IMEDIATAMENTE ACIMA do selecionado */
-/* (Seletor adjacente: o botão que precede um .active) */
 .course-btn:has(+ .course-btn.active)::after {
     opacity: 0;
 }
 
-/* 3. O ESTADO ATIVO (Com o detalhe azul de volta) */
 .course-btn.active {
     background-color: #1e293b;
     border-radius: 8px;
     color: #fff;
     font-weight: 500;
     
-    /* O TRUQUE: Encolhe a margem para compensar a sumida das linhas */
     margin-top: -1px;
     margin-bottom: -1px;
-    z-index: 2; /* Garante que fique acima de qualquer linha vizinha */
+    z-index: 2; 
     
     position: relative;
-    box-shadow: none; /* Removemos o inset rígido */
+    box-shadow: none; 
 }
 
 .course-btn:hover:not(.active):not(:disabled) {
-    background-color: rgba(30, 41, 59, 0.5); /* Hover mais transparente */
+    background-color: rgba(30, 41, 59, 0.5); 
     border-radius: 8px;
     color: #f8fafc;
 }
@@ -214,22 +193,19 @@
 
 @media (max-width: 768px) {
     .sidebar {
-        /* Toma 100% da tela */
         width: 100vw;
-        
-        /* Flutua por cima do grafo em vez de espremer ele */
+      
         position: absolute;
         height: 100%;
         top: 0;
         left: 0;
-        z-index: 50; /* Máxima prioridade */
+        z-index: 50; 
     }
 
-    /* O botão flutuante precisa ficar bem acessível no mobile */
     .floating-toggle-btn {
         top: 1rem;
         left: 1rem;
-        padding: 0.6rem 0.85rem; /* Um pouco maior para o dedo (Touch Target) */
+        padding: 0.6rem 0.85rem; 
         font-size: 1.5rem;
         z-index: 40;
     }

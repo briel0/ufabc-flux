@@ -33,3 +33,28 @@ html, body, #root {
     position: relative;
     height: 100%;
 }
+
+/* Botão Sobre flutuante */
+.about-btn {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    z-index: 10;
+    background-color: var(--bg-default);
+    color: var(--text-main);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 12px 15px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease-in-out;
+}
+
+.about-btn:hover {
+    background-color: var(--bg-selected);
+    border-color: var(--accent-selected);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(59, 130, 246, 0.3);
+}
