@@ -2,12 +2,12 @@
    SIDEBAR (Zen Mode)
    ========================================= */
 .sidebar {
-    width: 380px;
+    width: 360px;
     background-color: #0f172a;
     border-right: 1px solid #1e293b;
     display: flex;
     flex-direction: column;
-    padding: 1.5rem;
+    padding: 1.5rem 0.2rem;
     z-index: 10;
     color: #e2e8f0;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -28,6 +28,8 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 .sidebar-header h2 {
@@ -103,8 +105,8 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
     overflow-y: auto;
     overflow-x: hidden;
     padding-right: 0.5rem;
@@ -138,35 +140,71 @@
     color: #cbd5e1;
     cursor: pointer;
     transition: all 0.2s ease;
-    width: 100%;
+    width: calc(100% - 16px);
+    margin: 0 8px;
     border: none;
-    border-bottom: 1px solid #1e293b; 
-    border-radius: 4px; 
-
-    white-space: nowrap;        /* Proíbe o texto de ir para a linha de baixo */
-    overflow: hidden;           /* Esconde o que vazar da caixa */
-    text-overflow: ellipsis;    /* Adiciona o "..." automaticamente no final */
-
-    flex-shrink: 0;         /* Proíbe o botão de ser espremido verticalmente */
-    line-height: 0.8;       /* Dá o espaço correto para as pernas do 'g', 'p', 'j' */
-
+    flex-shrink: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: relative;
 }
 
-.course-btn:last-child {
-    border-bottom: none;
+/* 1. A LINHA DIVISÓRIA (Sutil e com recuo) */
+.course-btn::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 8px;   /* Recuo interno para não tocar as bordas */
+    right: 8px;
+    height: 1px;
+    background-color: #1e293b;
+    transition: opacity 0.2s;
 }
 
-.course-btn:hover:not(:disabled) {
-    background-color: #162032; 
-    color: #f8fafc;
+/* 2. O TRUQUE DE MESTRE: Sumir com as linhas vizinhas */
+/* Esconde a linha do botão selecionado */
+.course-btn.active::after {
+    opacity: 0;
 }
 
+.course-btn.active::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 25%;       /* Centralizado e menor, muito mais elegante */
+    height: 50%;
+    width: 4px;
+    background-color: #3b82f6;
+    border-radius: 0 4px 4px 0; /* Arredondado apenas na direita para "nascer" da borda */
+}
+
+/* Esconde a linha do botão que está IMEDIATAMENTE ACIMA do selecionado */
+/* (Seletor adjacente: o botão que precede um .active) */
+.course-btn:has(+ .course-btn.active)::after {
+    opacity: 0;
+}
+
+/* 3. O ESTADO ATIVO (Com o detalhe azul de volta) */
 .course-btn.active {
     background-color: #1e293b;
+    border-radius: 8px;
     color: #fff;
     font-weight: 500;
-    box-shadow: inset 3px 0 0 #3b82f6; 
-    border-bottom-color: transparent; 
+    
+    /* O TRUQUE: Encolhe a margem para compensar a sumida das linhas */
+    margin-top: -1px;
+    margin-bottom: -1px;
+    z-index: 2; /* Garante que fique acima de qualquer linha vizinha */
+    
+    position: relative;
+    box-shadow: none; /* Removemos o inset rígido */
+}
+
+.course-btn:hover:not(.active):not(:disabled) {
+    background-color: rgba(30, 41, 59, 0.5); /* Hover mais transparente */
+    border-radius: 8px;
+    color: #f8fafc;
 }
 
 .course-btn:disabled {
@@ -174,14 +212,25 @@
     cursor: not-allowed;
 }
 
-/* =========================================
-   RODAPÉ
-   ========================================= */
-.sidebar-footer {
-    margin-top: auto;
-    color: #64748b;
-    font-size: 0.8rem;
-    border-top: 1px solid #1e293b;
-    padding-top: 1rem;
-    width: 100%;
+@media (max-width: 768px) {
+    .sidebar {
+        /* Toma 100% da tela */
+        width: 100vw;
+        
+        /* Flutua por cima do grafo em vez de espremer ele */
+        position: absolute;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 50; /* Máxima prioridade */
+    }
+
+    /* O botão flutuante precisa ficar bem acessível no mobile */
+    .floating-toggle-btn {
+        top: 1rem;
+        left: 1rem;
+        padding: 0.6rem 0.85rem; /* Um pouco maior para o dedo (Touch Target) */
+        font-size: 1.5rem;
+        z-index: 40;
+    }
 }

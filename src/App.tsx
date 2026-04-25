@@ -1,7 +1,7 @@
 import ReactFlow, {Background, Controls, Node, ReactFlowInstance} from 'reactflow';
 import 'reactflow/dist/style.css'
 
-import materias from './data/materiasbcc.json';
+import materias from './data/materias-bcc.json';
 
 import {Disciplina} from './types';
 
@@ -19,12 +19,26 @@ import { useGraphViewport } from './utils/graph/viewport-config';
 
 import { Sidebar } from './components/Sidebar';
 
+const slugify = (text: string) => {
+    return text
+        .toString()
+        .toLowerCase()
+        .normalize("NFD") 
+        .replace(/[\u0300-\u036f]/g, "") 
+        .replace(/\s+/g, "-") 
+        .replace(/[^\w-]+/g, "") 
+        .replace(/--+/g, "-") 
+        .trim();
+};
+
 function App() {
 
-    const [currentCourse, setCurrentCourse] = useState<string>('bcc');
+    const [currentCourse, setCurrentCourse] = useState<string>('bacharelado-em-ciencia-e-tecnologia');
 
     const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
     const [rfInstance, setRfInstance] = useState<ReactFlowInstance | null>(null);
+
+    const [materias, setMaterias] = useState<Disciplina[]>([]);
 
     const courseMap = useMemo(
         function(){
@@ -34,12 +48,36 @@ function App() {
                 }
             ));
         },
-        []
+        [materias]
     ); 
     
     const [selectedIds, setSelectedCourseIds] = useState<Set<string>>(new Set());
     
     const {maxPerRow, initialViewport, translateExtent} = useGraphViewport(materias.length);
+
+    console.log()
+
+    useEffect(() => {
+        async function loadCourseData() {
+            if (!currentCourse) return;
+            try {
+                const fileName = slugify(currentCourse);
+                const module = await import(`./data/${fileName}.json`);
+                const loadedMaterias = module.default || module;
+                setMaterias(loadedMaterias);
+                setSelectedCourseIds(new Set());
+                if (rfInstance) {
+                    setTimeout(() => rfInstance.fitView({ duration: 800, padding: 0.1 }), 100);
+                }
+
+            } catch (error) {
+                console.error(`Erro ao carregar o arquivo: ${currentCourse}`, error);
+                setMaterias([]);
+            } 
+        }
+
+        loadCourseData();
+    }, [currentCourse, rfInstance]);
 
     const highlightedIds = useMemo(
         function(){
@@ -126,7 +164,7 @@ function App() {
     );
 
     useEffect(() => {
-        if (rfInstance) {
+        if (rfInstance && materias.length > 0) {
             // Timer sintonizado com a transição do CSS (300ms)
             const timeout = setTimeout(() => {
                 rfInstance.fitView({ 
@@ -178,7 +216,6 @@ function App() {
 
                 >
                     <Background color="#888282ff" gap={20}/>
-                    <Controls/>
                 </ReactFlow>
             </main>
         </div>

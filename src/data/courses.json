@@ -4,127 +4,127 @@
     "disabled": false
   },
   {
-    "name": "Bacharelado em Ciências e Humanidades",
-    "disabled": false
-  },
-  {
-    "name": "Licenciatura em Ciências Humanas",
-    "disabled": false
-  },
-  {
-    "name": "Licenciatura em Ciências Naturais e Exatas",
-    "disabled": false
-  },
-  {
-    "name": "Bacharelado em Biotecnologia",
-    "disabled": false
-  },
-  {
     "name": "Bacharelado em Ciência da Computação",
     "disabled": false
   },
   {
+    "name": "Bacharelado em Ciências e Humanidades",
+    "disabled": true
+  },
+  {
+    "name": "Licenciatura em Ciências Humanas",
+    "disabled": true
+  },
+  {
+    "name": "Licenciatura em Ciências Naturais e Exatas",
+    "disabled": true
+  },
+  {
+    "name": "Bacharelado em Biotecnologia",
+    "disabled": true
+  },
+  {
     "name": "Bacharelado em Ciência de Dados",
-    "disabled": false
+    "disabled": true
   },
   {
     "name": "Bacharelado em Ciências Biológicas",
-    "disabled": false
+    "disabled": true
   },
   {
     "name": "Bacharelado em Física",
-    "disabled": false
+    "disabled": true
   },
   {
     "name": "Bacharelado em Matemática",
-    "disabled": false
+    "disabled": true
   },
   {
     "name": "Bacharelado em Neurociência",
-    "disabled": false
+    "disabled": true
   },
   {
     "name": "Bacharelado em Química",
-    "disabled": false
+    "disabled": true
   },
   {
     "name": "Bacharelado em Ciências Econômicas",
-    "disabled": false
+    "disabled": true
   },
   {
     "name": "Bacharelado em Filosofia",
-    "disabled": false
+    "disabled": true
   },
   {
     "name": "Bacharelado em Planejamento Territorial",
-    "disabled": false
+    "disabled": true
   },
   {
     "name": "Bacharelado em Políticas Públicas",
-    "disabled": false
+    "disabled": true
   },
   {
     "name": "Bacharelado em Relações Internacionais",
-    "disabled": false
+    "disabled": true
   },
   {
     "name": "Engenharia Ambiental e Urbana",
-    "disabled": false
+    "disabled": true
   },
   {
     "name": "Engenharia de Energia",
-    "disabled": false
+    "disabled": true
   },
   {
     "name": "Engenharia de Informação",
-    "disabled": false
+    "disabled": true
   },
   {
     "name": "Engenharia de Instrumentação, Automação e Robótica",
-    "disabled": false
+    "disabled": true
   },
   {
     "name": "Engenharia de Materiais",
-    "disabled": false
+    "disabled": true
   },
   {
     "name": "Engenharia Aeroespacial",
-    "disabled": false
+    "disabled": true
   },
   {
     "name": "Engenharia Biomédica",
-    "disabled": false
+    "disabled": true
   },
   {
     "name": "Engenharia de Gestão",
-    "disabled": false
+    "disabled": true
   },
   {
     "name": "Licenciatura em Filosofia",
-    "disabled": false
+    "disabled": true
   },
   {
     "name": "Licenciatura em Geografia",
-    "disabled": false
+    "disabled": true
   },
   {
     "name": "Licenciatura em História",
-    "disabled": false
+    "disabled": true
   },
   {
     "name": "Licenciatura em Ciências Biológicas",
-    "disabled": false
+    "disabled": true
   },
   {
     "name": "Licenciatura em Física",
-    "disabled": false
+    "disabled": true
   },
   {
     "name": "Licenciatura em Matemática",
-    "disabled": false
+    "disabled": true
   },
   {
     "name": "Licenciatura em Química",
-    "disabled": false
+    "disabled": true
   }
 ]

@@ -26,7 +26,7 @@ function exportCourses() {
 
         return {
             name: fullName,
-            disabled: false // Vamos deixar todos clicáveis por padrão agora
+            disabled: true // Vamos deixar todos clicáveis por padrão agora
         };
     });
 

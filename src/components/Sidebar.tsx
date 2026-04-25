@@ -18,9 +18,16 @@ export const Sidebar: React.FC<SidebarProps> = ({
     onToggleCollapse 
 }) => {
 
+const handleCourseClick = (courseName: string) => {
+  onSelectCourse(courseName);
+
+  if (window.innerWidth <= 768) {
+    onToggleCollapse(); 
+  }
+};
+
   return (
     <>
-      {/* Botão Flutuante (Zen Mode) - Só aparece quando a barra fecha */}
       {isCollapsed && (
         <button 
             className="floating-toggle-btn" 
@@ -31,7 +38,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
         </button>
       )}
 
-      {/* A Barra Lateral */}
       <aside className={`sidebar ${isCollapsed ? 'collapsed' : ''}`}>
         <div className="sidebar-header">
           <h3>Selecione o Curso</h3>
@@ -40,7 +46,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
               onClick={onToggleCollapse}
               title="Fechar menu"
           >
-            {/* SVG limpo, sem dependências. Usa 'currentColor' para herdar a cor do CSS */}
             <svg 
               xmlns="http://www.w3.org/2000/svg" 
               width="20" 
@@ -63,7 +68,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             <button
               key={course.name}
               className={`course-btn ${selectedCourse === course.name ? 'active' : ''}`}
-              onClick={() => !course.disabled && onSelectCourse(course.name)}
+              onClick={() => !course.disabled && handleCourseClick(course.name)}
               disabled={course.disabled}
 
               title={course.name}
@@ -73,10 +78,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
             </button>
           ))}
         </nav>
-        
-        <div className="sidebar-footer">
-
-        </div>
       </aside>
     </>
   );
